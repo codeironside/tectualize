@@ -3,7 +3,7 @@ body {
 }
 
 .gradient-text {
-    background: linear-gradient(0deg, #000000 0%, #e63946 100%);
+    background: linear-gradient(90deg, #000000 0%, #e63946 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-family: "Merriweather", serif;
@@ -28,14 +28,87 @@ body::before {
     content: "";
 }
 .gradient-color {
-    background: linear-gradient(0deg, #000000 0%, #e63946 100%);
+    background: linear-gradient(90deg, #000000 0%, #e63946 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
-.foots-gradient{
-     background: linear-gradient(0deg, #FFFFFF 0%, #FFE8EA 82%);
+.foots-gradient {
+    background: linear-gradient(90deg, #ffffff 0%, #ffe8ea 82%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
+.text-stylez-cs {
+    text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    font-family: "Merriweather", serif;
+    letter-spacing: 6%;
+}
+.text-stylez-st {
+    text-shadow: 2px 2px 5px red;
+    font-family: "Merriweather", serif;
+    letter-spacing: 4%;
+    font-size: 18px;
+}
+
+.gradient-button {
+    background: linear-gradient(0deg, #830405 0%, #e63946 100%);
+    border: none;
+    color: white;
+    font-weight: bold;
+    padding: 12px 20px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    flex-shrink: 0; /* Ensures button doesn't shrink */
+}
+
+.gradient-button:hover {
+    background: linear-gradient(0deg, #6a0404 0%, #d62828 100%);
+}
+
+/* Input field styling */
+.email-input-group {
+    position: relative;
+    flex-grow: 1; /* Allows the input field to grow dynamically */
+}
+
+.email-input-group input {
+    width: 100%;
+    padding-left: 45px; /* Space for the icon */
+    height: 45px;
+    border-radius: 5px;
+    border: 1px solid #ffe1e1;
+    background: linear-gradient(90deg, #ffffff 18%, #ffe1e1 100%);
+    color: #333;
+}
+
+.email-input-group .email-icon {
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+    color: #333;
+    font-size: 16px;
+}
+
+.email-input-group input:focus {
+    outline: none;
+    border-color: #e63946;
+    box-shadow: 0 0 5px rgba(230, 57, 70, 0.8);
+}
+
+/* Responsive adjustments */
+@media (max-width: 576px) {
+    .gradient-button {
+        padding: 10px 15px; /* Smaller padding for smaller screens */
+        font-size: 14px;
+    }
+
+    .email-input-group input {
+        height: 40px; /* Adjust height for smaller screens */
+        font-size: 14px;
+    }
+}
