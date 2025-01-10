@@ -88,6 +88,7 @@
         </div>
     </div>
 </footer>
+<x-flash-message />
 
 <style>
     .icon-gradient {

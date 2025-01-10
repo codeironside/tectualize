@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\WaitingList;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\waitingListConfirmation;
 
 class comingsoon extends Controller
 {
@@ -17,10 +20,19 @@ class comingsoon extends Controller
 
     public function sendEmail(Request $request)
     {
+
         $formFields = $request->validate([
-            "email" => ["required", Rule::unique('waitingListEmails', 'company')]
+            "email" => ["required", "email", Rule::unique('Waiting_Lists', 'email')]
         ]);
-        WaitingList::create($formFields);
-        return redirect('/')->with('message', 'mail send successful');
+
+        try {
+            WaitingList::create($formFields);
+            Mail::to($formFields['email'])->send(new waitingListConfirmation());
+            Log::info('mail sending sucess:');
+            return redirect('/')->with('message', 'Mail sent successfully!');
+        } catch (\Exception $e) {
+            Log::error('Mail Sending Error: ' . $e->getMessage());
+            return redirect('/')->with('error', 'Failed to send email. Please try again.');
+        }
     }
 }
